@@ -40,7 +40,7 @@ This addon adds powerful new modules, commands, and customization options to you
 
 ## ⬇️ Installation
 
-[![Discord Support](https://img.shields.io/discord/1347891778900201572?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/VoidClan)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Server-5865F2?style=flat&logo=discord&logoColor=white)](https://discord.gg/VoidClan)
 
 Follow these steps to install the addon:
 
