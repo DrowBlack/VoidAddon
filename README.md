@@ -17,7 +17,7 @@
 [![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/YOUR_USERNAME/YOUR_REPO/network/members)
 
 <!-- Discord Widget -->
-<a href="https://discord.gg/VoidClan"><img src="https://invidget.switchblade.xyz/(https://discord.com/invite/VoidClan)"></a>
+<a href="https://discord.gg/VoidClan"><img src="https://invidget.switchblade.xyz/https://discord.com/invite/VoidClan"></a>
 
 <!-- Minecraft Version -->
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.5-brightgreen?style=flat&logo=minecraft)
