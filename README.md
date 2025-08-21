@@ -1,131 +1,147 @@
 <div align="center">
 
-<!-- Logo ve Başlık -->
-<img src="https://raw.githubusercontent.com/KULLANICI_ADI/REPO_ADI/main/src/main/resources/assets/ADDON_ADI/textures/icon.png" alt="logo" width="20%"/>
+<!-- Logo and Title -->
+<img src="https://raw.githubusercontent.com/DrowBlack/VoidAddon/main/src/main/resources/assets/Images/Void-chan.png" alt="logo" width="20%"/>
 
-<h1>ADDON ADINIZ</h1>
+<h1>Void Addon</h1>
 
-<p>Meteor Client için geliştirilmiş güçlü ve kullanışlı özellikler sunan addon. Modern Minecraft deneyiminizi geliştirmek için tasarlandı.</p>
+<p>A powerful Meteor Client addon that enhances your modern Minecraft experience with useful features and customization options.</p>
 
-<!-- Rozetler -->
-[![License][shield-repo-license]][repo-license]
-[![Release][shield-repo-latest]][repo-latest]
-[![Downloads][shield-repo-downloads]][repo-downloads]
-[![Stars][shield-repo-stars]][repo-stars]
-[![Code Size][shield-repo-code-size]][repo-code-size]
-[![Issues][shield-repo-issues]][repo-issues]
-[![Forks][shield-repo-forks]][repo-forks]
+<!-- Badges -->
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?style=flat&color=brightgreen)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases)
+[![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/YOUR_USERNAME/YOUR_REPO/stargazers)
+[![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/YOUR_USERNAME/YOUR_REPO)
+[![Issues](https://img.shields.io/github/issues/DrowBlack/VoidAddon?style=flat&color=red)](https://github.com/YOUR_USERNAME/YOUR_REPO/issues)
+[![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/YOUR_USERNAME/YOUR_REPO/network/members)
 
 <!-- Discord Widget -->
-[![Discord][discord-widget]][discord-invite]
+<a href="https://discord.gg/VoidClan"><img src="https://invidget.switchblade.xyz/(https://discord.com/invite/VoidClan)"></a>
 
 <!-- Minecraft Version -->
-![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.3-brightgreen?style=flat&logo=minecraft)
+![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.5-brightgreen?style=flat&logo=minecraft)
 ![Mod Loader](https://img.shields.io/badge/Mod%20Loader-Fabric-ddd?style=flat)
+![Meteor Client](https://img.shields.io/badge/Meteor%20Client-Required-orange?style=flat)
 
 </div>
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-Bu addon, Meteor Client'ınıza güçlü yeni modüller, komutlar ve özelleştirme seçenekleri ekler. Ana odak noktamız performans, kullanılabilirlik ve estetik deneyimdir.
+This addon adds powerful new modules, commands, and customization options to your Meteor Client. Our main focus is performance, usability, and aesthetic experience.
 
-### 🎯 Ana Avantajlar
-- **Performans Odaklı**: Minimum FPS kaybı ile maksimum özellik
-- **Kullanıcı Dostu**: Kolay kurulum ve sezgisel arayüz  
-- **Sürekli Güncellenme**: Düzenli güncellemeler ve yeni özellikler
-- **Topluluk Desteği**: Aktif Discord topluluğu
+### 🎯 Key Advantages
+- **Performance Focused**: Maximum features with minimal FPS loss
+- **User Friendly**: Easy installation and intuitive interface  
+- **Constantly Updated**: Regular updates and new features
+- **Community Support**: Active Discord community
 
-## ⬇️ Kurulum
+## ⬇️ Installation
 
-[![Discord Support][shield-discord]][discord-invite]
+[![Discord Support](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/YOUR_DISCORD_INVITE)
 
-Addon'u kurmak için aşağıdaki adımları izleyin:
+Follow these steps to install the addon:
 
-1. **Meteor Client'ı İndirin**: Henüz yapmadıysanız, [Meteor Client](https://meteorclient.com)'ın son sürümünü indirin
-2. **Addon'u İndirin**: [Son sürümü buradan indirin][repo-releases]
-3. **Kurulum**: İndirdiğiniz `.jar` dosyasını `.minecraft/mods` klasörüne koyun
-4. **Oyunu Başlatın**: Minecraft'ı Fabric ile başlatın ve keyfini çıkarın!
+1. **Download Meteor Client**: If you haven't already, download the latest version of [Meteor Client](https://meteorclient.com)
+2. **Download the Addon**: [Download the latest release here](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest)
+3. **Installation**: Place the downloaded `.jar` file in your `.minecraft/mods` folder
+4. **Launch the Game**: Start Minecraft with Fabric and enjoy!
 
-> **Not**: Bu addon çalışması için Meteor Client gerektirir.
+> **Note**: This addon requires Meteor Client to function.
 
-## 🔧 Modüller
+## 🔧 Modules
 
-### 🎮 Genel Modüller
+### 🎮 General Modules
 
-| Modül | Açıklama |
-|-------|----------|
-| **Auto Log Plus** | Belirli koşullar karşılandığında otomatik olarak sunucudan çıkar |
-| **Better Place** | Blokları farklı şekillerde yerleştirmenizi sağlar |
-| **Bayblade** | Dönerken havalı görünmenizi sağlar |
-| **Bonemeal Aura** | Çevrenizde otomatik olarak kemik unu kullanır |
-| **Chat Encryption** | Mesajlarınızı özel anahtar ile şifreler |
-| **Condition Toggle** | Belirli koşullara göre modülleri açar/kapatır |
-| **Confetti** | Totem patlaması parçacıklarının rengini değiştirir |
-| **FloRida** | Dönerek havalı görünmenizi sağlar |
-| **Game Settings** | Çeşitli oyun ayarlarını değiştirmenizi sağlar |
-| **Jump Helper** | Ne kadar uzağa zıplayabileceğinizi gösterir |
-| **New Chunks** | Akan sıvılara göre yeni chunk'ları bulur |
-| **Safety Net** | Belirli Y seviyesine ulaştığınızda altınıza blok koyar |
-| **Spawner ESP** | Farklı mob spawnerlarını renkli şekilde gösterir |
+| Module | Description |
+|--------|-------------|
+| **Auto Log Plus** | Automatically disconnects when specific conditions are met |
+| **Better Place** | Allows you to place blocks in unique ways |
+| **Bayblade** | Makes you spin and look cool to others |
+| **Bonemeal Aura** | Automatically applies bonemeal to crops around you |
+| **Chat Encryption** | Encrypts your messages with a private key |
+| **Condition Toggle** | Toggles modules based on specific conditions |
+| **Confetti** | Changes the color of totem pop particles |
+| **FloRida** | Makes you spin and appear stylish |
+| **Game Settings** | Allows you to modify various game settings |
+| **Ignore Deaths** | Ignores death messages from specific players |
+| **Jump Helper** | Shows how far you can jump |
+| **Log Out Spots** | Shows where players have logged out |
+| **New Chunks** | Finds new chunks based on flowing liquids |
+| **No Strip** | Prevents you from accidentally stripping logs |
+| **Number81** | Counts to 81 in chat |
+| **Numby Chat** | Improves your chat experience in various ways |
+| **NumbyRPC** | Displays the addon as your Discord presence |
+| **Packet Delay** | Allows you to delay packets sent to server |
+| **Ride Stats** | Shows information about rideable entities |
+| **Safe Fire** | Prevents you from walking into fire sources |
+| **Safety Net** | Places a block under you at a set Y level |
+| **Spawner ESP** | Shows different mob spawners in different colors |
+| **Egap Finder** | Searches for Egaps in singleplayer and saves locations |
+| **Wurst Glide** | Allows you to glide |
 
-### 🖥️ HUD Modülleri
+### 🖥️ HUD Modules
 
-| Modül | Açıklama |
-|-------|----------|
-| **Item Counter** | Envanterdeki belirli eşyaları sayar |
-| **Key Press HUD** | Bastığınız tuşları gösterir |
-| **Lava Warning** | Altınızda lav olduğunda uyarır |
-| **Kills/Deaths/KDR** | Öldürme, ölüm ve K/D oranını gösterir |
-| **Kill Streak** | Öldürme serisini takip eder |
-| **Text Radar** | Görüş mesafenizdeki oyuncuları listeler |
-| **Server Brand** | Sunucu markasını gösterir |
+| Module | Description |
+|--------|-------------|
+| **81** | Number81 On Top! |
+| **Item Counter** | Counts specific items from your inventory |
+| **Key Press HUD** | Displays the keys you press |
+| **Lava Warning** | Warns you when there's lava below you |
+| **Kills** | Shows the number of player kills |
+| **Deaths** | Shows the number of deaths |
+| **KDR** | Shows kill-death ratio |
+| **High Score** | Displays your high score |
+| **Kill Streak** | Shows your current kill streak |
+| **Text Radar** | Shows names of players in render distance with stats |
+| **Server Brand** | Displays the server brand |
 
-## 📝 Komutlar
+## 📝 Commands
 
-| Komut | Kullanım | Açıklama |
-|-------|----------|----------|
-| `.clear` | `.clear` | Sohbeti temizler |
-| `.coord-convert` | `.coord-convert <x> <y> <z>` | Koordinatları boyutlar arası dönüştürür |
+| Command | Usage | Description |
+|---------|-------|-------------|
+| `.clear` | `.clear` | Clears your chat |
+| `.coord-convert` | `.coord-convert <x> <y> <z>` | Converts coordinates between dimensions (overworld/end ↔ nether) |
 
-## 🎨 Ek Özellikler
+## 🎨 Additional Features
 
-- **Player Particles**: Belirli oyuncular etrafında parçacık efektleri
-- **Custom Themes**: Kişiselleştirilmiş renk temaları
-- **Advanced Configuration**: Detaylı ayar seçenekleri
+- **Player Particles**: Renders particles around specific players
+- **Custom Themes**: Personalized color themes
+- **Advanced Configuration**: Detailed customization options
 
-## 🤝 Katkıda Bulunma
+## 🤝 Contributing
 
-Bu projeye katkıda bulunmak isterseniz:
+If you'd like to contribute to this project:
 
-1. Repo'yu fork edin
-2. Yeni özellik dalı oluşturun (`git checkout -b yeni-ozellik`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
-4. Dal'ınıza push edin (`git push origin yeni-ozellik`)
-5. Pull Request oluşturun
+1. Fork the repository
+2. Create a feature branch (`git checkout -b new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin new-feature`)
+5. Create a Pull Request
 
-## 📞 Destek
+## 📞 Support
 
-[![Discord][shield-discord]][discord-invite]
+[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/YOUR_DISCORD_INVITE)
 
-Herhangi bir sorunuz veya probleminiz varsa:
+If you have any questions or issues:
 
-- **Discord Sunucusu**: [Buradan katılın][discord-invite]
-- **GitHub Issues**: [Sorun bildir veya öneride bulun][repo-issues]
-- **Dokümantasyon**: [Wiki sayfalarını inceleyin][repo-wiki]
+- **Discord Server**: [Join here](https://discord.gg/YOUR_DISCORD_INVITE)
+- **GitHub Issues**: [Report bugs or suggest features](https://github.com/YOUR_USERNAME/YOUR_REPO/issues)
+- **Documentation**: [Check our wiki pages](https://github.com/YOUR_USERNAME/YOUR_REPO/wiki)
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
+This project is licensed under the [MIT License](LICENSE).
 
-## 🌟 Teşekkürler
+## 🌟 Acknowledgments
 
 <div align="center">
 
-**Bu projeyi beğendiyseniz ⭐ vermeyi unutmayın!**
+**If you like this project, don't forget to give it a ⭐!**
 
-[Daha fazla Meteor addon'u için buraya bakın](https://www.meteoraddons.com/)
+[Find more cool Meteor addons here](https://www.meteoraddons.com/)
 
 </div>
 
@@ -133,28 +149,8 @@ Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
 
 <div align="center">
 
-*Not: Bu kodun tamamı tarafımdan yazılmamıştır. Çeşitli kaynaklardan esinlenilmiştir.*
+*Note: Not all code was written by me. Various sources were used for inspiration.*
 
 Made with ❤️ for the Meteor community
 
 </div>
-
-<!-- Bağlantılar -->
-[repo-releases]: https://github.com/KULLANICI_ADI/REPO_ADI/releases
-[repo-issues]: https://github.com/KULLANICI_ADI/REPO_ADI/issues
-[repo-wiki]: https://github.com/KULLANICI_ADI/REPO_ADI/wiki
-[repo-license]: https://github.com/KULLANICI_ADI/REPO_ADI/blob/main/LICENSE
-
-[discord-invite]: https://discord.gg/DISCORD_INVITE_KODU
-[discord-widget]: https://invidget.switchblade.xyz/DISCORD_INVITE_KODU
-
-<!-- Rozetler -->
-[shield-repo-license]: https://img.shields.io/github/license/KULLANICI_ADI/REPO_ADI?style=flat&labelColor=004a94&color=004a94
-[shield-repo-latest]: https://img.shields.io/github/v/release/KULLANICI_ADI/REPO_ADI?display_name=release&style=flat&labelColor=153F8D&color=153F8D
-[shield-repo-downloads]: https://img.shields.io/github/downloads/KULLANICI_ADI/REPO_ADI/total?style=flat&labelColor=2A3585&color=2A3585
-[shield-repo-stars]: https://img.shields.io/github/stars/KULLANICI_ADI/REPO_ADI?style=flat&labelColor=3F2A7E&color=3F2A7E
-[shield-repo-code-size]: https://img.shields.io/github/languages/code-size/KULLANICI_ADI/REPO_ADI?style=flat&labelColor=552076&color=552076
-[shield-repo-issues]: https://img.shields.io/github/issues/KULLANICI_ADI/REPO_ADI?style=flat&labelColor=6A156F&color=6A156F
-[shield-repo-forks]: https://img.shields.io/github/forks/KULLANICI_ADI/REPO_ADI?style=flat&labelColor=940060&color=940060
-
-[shield-discord]: https://img.shields.io/discord/DISCORD_SERVER_ID?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2
