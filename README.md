@@ -8,13 +8,13 @@
 <p>A powerful Meteor Client addon that enhances your modern Minecraft experience with useful features and customization options.</p>
 
 <!-- Badges -->
-[![License][shield-repo-license]][repo-license]
-[![Release][shield-repo-latest]][repo-latest]
-[![Release][shield-repo-latest]][repo-latest]
-[![Stars][shield-repo-stargazers]][repo-stargazers]
-[![Code Size][shield-repo-code-size]][repo-code-size]
-[![Issues][shield-repo-issues]][repo-issues]
-[![Forks][shield-repo-forks]][repo-forks]
+[![License](https://img.shields.io/github/license/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon/blob/main/LICENSE)
+[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases)
+[![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/DrowBlack/VoidAddon/stargazers)
+[![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon)
+[![Issues](https://img.shields.io/github/issues/DrowBlack/VoidAddon?style=flat&color=red)](https://github.com/DrowBlack/VoidAddon/issues)
+[![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/DrowBlack/VoidAddon/network/members)
 
 <!-- Discord Widget -->
 <a href="https://discord.gg/VoidClan"><img src="https://invidget.switchblade.xyz/VoidClan"></a>
