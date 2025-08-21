@@ -64,6 +64,7 @@ Follow these steps to install the addon:
 | **Totem Message** | Automatically Sends Message When Someone Popped Totem (I Think Its Not Work Perfectly I Will Fix That) |
 | **Chat Bypass** | Its Bypasses Some Chat Plugins Not Works In Every Server (You Can Look Clarity Addon For Perfect Chat Bypass) |
 | **Link Bypass** | Its Bypasses Some Chat Plugins Not Works In Every Server (You Can Look Clarity Addon For Perfect Link Bypass) |
+
 // More Will Be Added If You Want Something Just Say Me On Dc Ill Add That.
 
 ### 🖥️ HUD Modules
@@ -71,6 +72,7 @@ Follow these steps to install the addon:
 | Module | Description |
 |--------|-------------|
 | **Image** | You Can Add Some Images To Screen! |
+
 // More Is Soon...
 
 ## 📝 Commands
