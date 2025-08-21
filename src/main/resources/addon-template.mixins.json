@@ -1,10 +1,9 @@
 {
   "required": true,
-  "package": "com.example.addon.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "client": [
-    "ExampleMixin"
-  ],
+  "package": "com.VoidClan.addon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [],
+  "server": [],
   "injectors": {
     "defaultRequire": 1
   }

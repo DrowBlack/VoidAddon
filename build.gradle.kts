@@ -1,64 +1,68 @@
 plugins {
     id("fabric-loom") version "1.10-SNAPSHOT"
+    id("maven-publish")
 }
 
+version = project.property("mod_version") as String
+group = project.property("maven_group") as String
+
 base {
-    archivesName = properties["archives_base_name"] as String
-    version = properties["mod_version"] as String
-    group = properties["maven_group"] as String
+    archivesName.set(project.property("archives_base_name") as String)
+}
+
+val targetJavaVersion = 21
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    withSourcesJar()
 }
 
 repositories {
-    maven {
-        name = "meteor-maven"
-        url = uri("https://maven.meteordev.org/releases")
-    }
-    maven {
-        name = "meteor-maven-snapshots"
-        url = uri("https://maven.meteordev.org/snapshots")
-    }
+    mavenCentral()
+    maven("https://maven.fabricmc.net/")
+    maven("https://maven.meteordev.org/releases")
+    maven("https://maven.meteordev.org/snapshots")
 }
 
 dependencies {
-    // Fabric
-    minecraft("com.mojang:minecraft:${properties["minecraft_version"] as String}")
-    mappings("net.fabricmc:yarn:${properties["yarn_mappings"] as String}:v2")
-    modImplementation("net.fabricmc:fabric-loader:${properties["loader_version"] as String}")
-
-    // Meteor
-    modImplementation("meteordevelopment:meteor-client:${properties["minecraft_version"] as String}-SNAPSHOT")
+    minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
+    mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
+    modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    
+    modImplementation("meteordevelopment:meteor-client:${project.property("meteor_version")}")
 }
 
-tasks {
-    processResources {
-        val propertyMap = mapOf(
+tasks.processResources {
+    inputs.property("version", project.version)
+    inputs.property("minecraft_version", project.property("minecraft_version"))
+    inputs.property("loader_version", project.property("loader_version"))
+    
+    filesMatching("fabric.mod.json") {
+        expand(
             "version" to project.version,
-            "mc_version" to project.property("minecraft_version"),
+            "minecraft_version" to project.property("minecraft_version"),
+            "loader_version" to project.property("loader_version")
         )
+    }
+}
 
-        inputs.properties(propertyMap)
+tasks.withType<JavaCompile>().configureEach {
+    options.release = targetJavaVersion
+}
 
-        filteringCharset = "UTF-8"
+tasks.jar {
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName}" }
+    }
+}
 
-        filesMatching("fabric.mod.json") {
-            expand(propertyMap)
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
         }
     }
-
-    jar {
-        val licenseSuffix = project.base.archivesName.get()
-        from("LICENSE") {
-            rename { "${it}_${licenseSuffix}" }
-        }
-    }
-
-    java {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-    }
-
-    withType<JavaCompile> {
-        options.encoding = "UTF-8"
-        options.release = 21
+    
+    repositories {
     }
 }
