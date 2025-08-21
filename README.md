@@ -9,7 +9,7 @@
 
 <!-- Badges -->
 [![License](https://img.shields.io/github/license/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon/blob/main/LICENSE)
-[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases/latest)
+[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?include_prereleases&style=flat&color=orange)](https://github.com/DrowBlack/VoidAddon/releases)
 [![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases)
 [![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/DrowBlack/VoidAddon/stargazers)
 [![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon)
