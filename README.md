@@ -9,12 +9,12 @@
 
 <!-- Badges -->
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?style=flat&color=brightgreen)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases)
-[![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/YOUR_USERNAME/YOUR_REPO/stargazers)
-[![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/YOUR_USERNAME/YOUR_REPO)
-[![Issues](https://img.shields.io/github/issues/DrowBlack/VoidAddon?style=flat&color=red)](https://github.com/YOUR_USERNAME/YOUR_REPO/issues)
-[![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/YOUR_USERNAME/YOUR_REPO/network/members)
+[![Release](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddon/releases)
+[![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/DrowBlack/VoidAddon/stargazers)
+[![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon)
+[![Issues](https://img.shields.io/github/issues/DrowBlack/VoidAddon?style=flat&color=red)](https://github.com/DrowBlack/VoidAddon/issues)
+[![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/DrowBlack/VoidAddon/network/members)
 
 <!-- Discord Widget -->
 <a href="https://discord.gg/VoidClan"><img src="https://invidget.switchblade.xyz/VoidClan"></a>
