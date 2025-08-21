@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Logo and Title -->
-<img src="https://raw.githubusercontent.com/DrowBlack/VoidAddon/main/src/main/resources/assets/Images/Void-chan.png" alt="logo" width="20%"/>
+<img src="https://raw.githubusercontent.com/DrowBlack/VoidAddon/main/src/main/resources/assets/images/Void-chan.png" alt="logo" width="20%"/>
 
 <h1>Void Addon</h1>
 
