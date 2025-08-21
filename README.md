@@ -30,22 +30,22 @@
 
 ## ✨ Features
 
-This addon adds powerful new modules, commands, and customization options to your Meteor Client. Our main focus is performance, usability, and aesthetic experience.
+This addon adds powerful new modules, commands, and customization options to your Meteor Client. Our main focus is Utility, usability, and aesthetic experience.
 
 ### 🎯 Key Advantages
-- **Performance Focused**: Maximum features with minimal FPS loss
+- **Utility Focused**: Maximum features with best utilities
 - **User Friendly**: Easy installation and intuitive interface  
 - **Constantly Updated**: Regular updates and new features
 - **Community Support**: Active Discord community
 
 ## ⬇️ Installation
 
-[![Discord Support](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/YOUR_DISCORD_INVITE)
+[![Discord Support](https://img.shields.io/discord/VoidClan?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/VoidClan)
 
 Follow these steps to install the addon:
 
 1. **Download Meteor Client**: If you haven't already, download the latest version of [Meteor Client](https://meteorclient.com)
-2. **Download the Addon**: [Download the latest release here](https://github.com/YOUR_USERNAME/YOUR_REPO/releases/latest)
+2. **Download the Addon**: [Download the latest release here](https://github.com/DrowBlack/VoidAddon/releases/latest)
 3. **Installation**: Place the downloaded `.jar` file in your `.minecraft/mods` folder
 4. **Launch the Game**: Start Minecraft with Fabric and enjoy!
 
@@ -57,59 +57,29 @@ Follow these steps to install the addon:
 
 | Module | Description |
 |--------|-------------|
-| **Auto Log Plus** | Automatically disconnects when specific conditions are met |
-| **Better Place** | Allows you to place blocks in unique ways |
-| **Bayblade** | Makes you spin and look cool to others |
-| **Bonemeal Aura** | Automatically applies bonemeal to crops around you |
-| **Chat Encryption** | Encrypts your messages with a private key |
-| **Condition Toggle** | Toggles modules based on specific conditions |
-| **Confetti** | Changes the color of totem pop particles |
-| **FloRida** | Makes you spin and appear stylish |
-| **Game Settings** | Allows you to modify various game settings |
-| **Ignore Deaths** | Ignores death messages from specific players |
-| **Jump Helper** | Shows how far you can jump |
-| **Log Out Spots** | Shows where players have logged out |
-| **New Chunks** | Finds new chunks based on flowing liquids |
-| **No Strip** | Prevents you from accidentally stripping logs |
-| **Number81** | Counts to 81 in chat |
-| **Numby Chat** | Improves your chat experience in various ways |
-| **NumbyRPC** | Displays the addon as your Discord presence |
-| **Packet Delay** | Allows you to delay packets sent to server |
-| **Ride Stats** | Shows information about rideable entities |
-| **Safe Fire** | Prevents you from walking into fire sources |
-| **Safety Net** | Places a block under you at a set Y level |
-| **Spawner ESP** | Shows different mob spawners in different colors |
-| **Egap Finder** | Searches for Egaps in singleplayer and saves locations |
-| **Wurst Glide** | Allows you to glide |
+| **Frame Dupe** | Automatically Duplicates Item With Frame. (If Not Works Use AutoFrameDupe) |
+| **Auto Frame Dupe** | Automatically Duplicates Item With Frame. (I Think It Works Perfectly) |
+| **Portal Frame Dupe** | Automatically Duplicates Item With Portal And Frame. (Its Created For Heretic Anarchy) |
+| **Kill Message** | Automatically Sends Message When You Kill Someone (I Think Its Not Work Perfectly I Will Fix That) |
+| **Totem Message** | Automatically Sends Message When Someone Popped Totem (I Think Its Not Work Perfectly I Will Fix That) |
+| **Chat Bypass** | Its Bypasses Some Chat Plugins Not Works In Every Server (You Can Look Clarity Addon For Perfect Chat Bypass) |
+| **Link Bypass** | Its Bypasses Some Chat Plugins Not Works In Every Server (You Can Look Clarity Addon For Perfect Link Bypass) |
+// More Will Be Added If You Want Something Just Say Me On Dc Ill Add That.
 
 ### 🖥️ HUD Modules
 
 | Module | Description |
 |--------|-------------|
-| **81** | Number81 On Top! |
-| **Item Counter** | Counts specific items from your inventory |
-| **Key Press HUD** | Displays the keys you press |
-| **Lava Warning** | Warns you when there's lava below you |
-| **Kills** | Shows the number of player kills |
-| **Deaths** | Shows the number of deaths |
-| **KDR** | Shows kill-death ratio |
-| **High Score** | Displays your high score |
-| **Kill Streak** | Shows your current kill streak |
-| **Text Radar** | Shows names of players in render distance with stats |
-| **Server Brand** | Displays the server brand |
+| **Image** | You Can Add Some Images To Screen! |
+// More Is Soon...
 
 ## 📝 Commands
 
-| Command | Usage | Description |
-|---------|-------|-------------|
-| `.clear` | `.clear` | Clears your chat |
-| `.coord-convert` | `.coord-convert <x> <y> <z>` | Converts coordinates between dimensions (overworld/end ↔ nether) |
+// Maybe Soon...
 
 ## 🎨 Additional Features
 
-- **Player Particles**: Renders particles around specific players
-- **Custom Themes**: Personalized color themes
-- **Advanced Configuration**: Detailed customization options
+// Maybe Soon...
 
 ## 🤝 Contributing
 
@@ -123,13 +93,13 @@ If you'd like to contribute to this project:
 
 ## 📞 Support
 
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/YOUR_DISCORD_INVITE)
+[![Discord](https://img.shields.io/discord/VoidClan?label=Discord&logo=discord&logoColor=white&style=flat&color=5865F2)](https://discord.gg/VoidClan)
 
 If you have any questions or issues:
 
-- **Discord Server**: [Join here](https://discord.gg/YOUR_DISCORD_INVITE)
-- **GitHub Issues**: [Report bugs or suggest features](https://github.com/YOUR_USERNAME/YOUR_REPO/issues)
-- **Documentation**: [Check our wiki pages](https://github.com/YOUR_USERNAME/YOUR_REPO/wiki)
+- **Discord Server**: [Join here](https://discord.gg/VoidClan)
+- **GitHub Issues**: [Report bugs or suggest features](https://github.com/DrowBlack/VoidAddon/issues)
+- **Documentation**: [Check our wiki pages](https://github.com/DrowBlack/VoidAddon/wiki)
 
 ## 📄 License
 
