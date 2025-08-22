@@ -12,241 +12,163 @@ import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.util.Identifier;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.CompletableFuture;
+import java.util.regex.Pattern;
 
 public class ImageHud extends HudElement {
-    public static final HudElementInfo<ImageHud> INFO = new HudElementInfo<>(Main.HUD_GROUP, "image", "Displays a custom image on HUD", ImageHud::new);
+    public static final HudElementInfo<ImageHud> INFO = new HudElementInfo<>(Main.HUD_GROUP, "image", "Displays an image from URL on HUD", ImageHud::new);
 
-    // Önceden tanımlanmış resim listesi (kolay seçim için)
-    public enum PresetImages {
-        LOGO("1.png", "1"),
-        ICON("icon.png", "VoidClan Icon"),
-        VoidChan("Void-chan.png", "VoidChan"),
-        BANNER("2.png", "2"),
-        AVATAR("3.png", "3"),
-        SWORD("4.png", "4"),
-        SHIELD("5.png", "5"),
-        CROWN("6.png", "6"),
-        STAR("7.png", "7"),
-        imo1("imo1.png", "imo1"),
-        imo2("imo2.png", "imo2"),
-        imo3("imo3.png", "imo3"),
-        imo4("imo4.png", "imo4"),
-        imo5("imo5.png", "imo5"),
-        imo6("imo6.png", "imo6"),
-        imo7("imo7.png", "imo7"),
-        imo8("imo8.png", "imo8"),
-        imo9("imo9.png", "imo9"),
-        imo10("imo10.png", "imo10"),
-        duck("duck.jpg", "duck"),
-        bear("bear.jpg", "bear"),
-        kuromi("kuromi.jpg", "kuromi"),
-        CUSTOM("", "Custom File");
-
-        private final String fileName;
-        private final String displayName;
-
-        PresetImages(String fileName, String displayName) {
-            this.fileName = fileName;
-            this.displayName = displayName;
-        }
-
-        public String getFileName() {
-            return fileName;
-        }
-
-        public String getDisplayName() {
-            return displayName;
-        }
-
-        @Override
-        public String toString() {
-            return displayName;
-        }
-    }
-
-    private final SettingGroup sgImage = settings.createGroup("Image Selection");
+    private final SettingGroup sgGeneral = settings.getDefaultGroup();
     private final SettingGroup sgAppearance = settings.createGroup("Appearance");
     private final SettingGroup sgEffects = settings.createGroup("Effects");
 
-    // Resim seçimi ayarları
-    private final Setting<PresetImages> presetImage = sgImage.add(new EnumSetting.Builder<PresetImages>()
-        .name("preset-image")
-        .description("Hazır resim seçeneklerinden birini seç")
-        .defaultValue(PresetImages.LOGO)
-        .build()
-    );
+    private final Setting<String> imageUrl = sgGeneral.add(new StringSetting.Builder()
+        .name("image-url")
+        .description("URL of image to display (.png, .jpg, .jpeg, .gif)")
+        .defaultValue("https://example.com/image.png")
+        .build());
 
-    private final Setting<String> customImageName = sgImage.add(new StringSetting.Builder()
-        .name("custom-image")
-        .description("Özel resim dosya adı (assets/images/ klasöründen)")
-        .defaultValue("logo.png")
-        .visible(() -> presetImage.get() == PresetImages.CUSTOM)
-        .build()
-    );
-
-    private final Setting<Boolean> autoRefresh = sgImage.add(new BoolSetting.Builder()
-        .name("auto-refresh")
-        .description("Dosya değişikliklerini otomatik algıla")
-        .defaultValue(true)
-        .build()
-    );
-
-    // Görünüm ayarları
     private final Setting<Double> imageScale = sgAppearance.add(new DoubleSetting.Builder()
         .name("scale")
-        .description("Resim boyutu ölçeği")
+        .description("Image scale")
         .defaultValue(1.0)
         .min(0.1)
         .max(5.0)
         .sliderRange(0.1, 3.0)
-        .build()
-    );
+        .build());
 
     private final Setting<Integer> imageOpacity = sgAppearance.add(new IntSetting.Builder()
         .name("opacity")
-        .description("Resim şeffaflığı")
+        .description("Image opacity")
         .defaultValue(255)
         .min(0)
         .max(255)
         .sliderRange(0, 255)
-        .build()
-    );
+        .build());
 
     private final Setting<Boolean> maintainAspectRatio = sgAppearance.add(new BoolSetting.Builder()
         .name("maintain-aspect")
-        .description("Orijinal en-boy oranını koru")
+        .description("Maintain original aspect ratio")
         .defaultValue(true)
-        .build()
-    );
+        .build());
 
     private final Setting<Integer> maxWidth = sgAppearance.add(new IntSetting.Builder()
         .name("max-width")
-        .description("Maksimum genişlik (piksel)")
+        .description("Maximum width (pixels)")
         .defaultValue(256)
         .min(16)
         .max(512)
         .sliderRange(16, 512)
         .visible(() -> !maintainAspectRatio.get())
-        .build()
-    );
+        .build());
 
     private final Setting<Integer> maxHeight = sgAppearance.add(new IntSetting.Builder()
         .name("max-height")
-        .description("Maksimum yükseklik (piksel)")
+        .description("Maximum height (pixels)")
         .defaultValue(256)
         .min(16)
         .max(512)
         .sliderRange(16, 512)
         .visible(() -> !maintainAspectRatio.get())
-        .build()
-    );
+        .build());
 
-    // Efekt ayarları
     private final Setting<Boolean> rainbow = sgEffects.add(new BoolSetting.Builder()
         .name("rainbow")
-        .description("Rainbow efekti uygula")
+        .description("Apply rainbow effect")
         .defaultValue(false)
-        .build()
-    );
+        .build());
 
     private final Setting<Double> rainbowSpeed = sgEffects.add(new DoubleSetting.Builder()
         .name("rainbow-speed")
-        .description("Rainbow efekt hızı")
+        .description("Rainbow effect speed")
         .defaultValue(1.0)
         .min(0.1)
         .max(5.0)
         .sliderRange(0.1, 3.0)
         .visible(rainbow::get)
-        .build()
-    );
+        .build());
 
     private final Setting<SettingColor> tintColor = sgEffects.add(new ColorSetting.Builder()
         .name("tint-color")
-        .description("Resme renk tonu uygula")
+        .description("Apply color tint to image")
         .defaultValue(new SettingColor(255, 255, 255, 255))
         .visible(() -> !rainbow.get())
-        .build()
-    );
+        .build());
 
     private final Setting<Boolean> pulse = sgEffects.add(new BoolSetting.Builder()
         .name("pulse")
-        .description("Nabız efekti")
+        .description("Pulse effect")
         .defaultValue(false)
-        .build()
-    );
+        .build());
 
     private final Setting<Double> pulseSpeed = sgEffects.add(new DoubleSetting.Builder()
         .name("pulse-speed")
-        .description("Nabız efekt hızı")
+        .description("Pulse effect speed")
         .defaultValue(1.0)
         .min(0.1)
         .max(5.0)
         .sliderRange(0.1, 3.0)
         .visible(pulse::get)
-        .build()
-    );
+        .build());
 
     private final Setting<Boolean> showBackground = sgAppearance.add(new BoolSetting.Builder()
         .name("background")
-        .description("Arka plan göster")
+        .description("Show background")
         .defaultValue(false)
-        .build()
-    );
+        .build());
 
     private final Setting<SettingColor> backgroundColor = sgAppearance.add(new ColorSetting.Builder()
         .name("background-color")
-        .description("Arka plan rengi")
+        .description("Background color")
         .defaultValue(new SettingColor(0, 0, 0, 100))
         .visible(showBackground::get)
-        .build()
-    );
+        .build());
 
-    // Texture ve boyut bilgileri
     private Identifier textureId;
     private int imageWidth = 64;
     private int imageHeight = 64;
     private boolean textureLoaded = false;
-    private String lastImageName = "";
-    private PresetImages lastPreset = null;
-    private long lastFileCheck = 0;
-    
-    // Mevcut dosyalar cache'i
-    private Set<String> availableImages = new HashSet<>();
-    private long lastDirScan = 0;
+    private String lastImageUrl = "";
+    private CompletableFuture<Void> imageLoadingTask;
+    private boolean showError = false;
+    private String errorMessage = "";
+
+    private static final Pattern SUPPORTED_FORMATS = Pattern.compile(".*\\.(png|jpg|jpeg|gif)(\\?.*)?$", Pattern.CASE_INSENSITIVE);
 
     public ImageHud() {
         super(INFO);
-        scanImageDirectory();
     }
 
     @Override
     public void render(HudRenderer renderer) {
-        // Otomatik yenileme kontrolü
-        if (autoRefresh.get() && System.currentTimeMillis() - lastFileCheck > 2000) {
-            checkForChanges();
-            lastFileCheck = System.currentTimeMillis();
-        }
-
-        // Resim değiştiyse yeniden yükle
-        String currentImageName = getCurrentImageName();
-        if (!currentImageName.equals(lastImageName) || presetImage.get() != lastPreset) {
-            loadImage();
-            lastImageName = currentImageName;
-            lastPreset = presetImage.get();
+        String currentUrl = imageUrl.get();
+        if (!currentUrl.equals(lastImageUrl)) {
+            loadImageFromUrl(currentUrl);
+            lastImageUrl = currentUrl;
+            showError = false;
         }
 
         if (!textureLoaded || textureId == null) {
-            // Fallback: Resim yüklenemezse bilgi göster
-            String errorMsg = "Image: " + getCurrentImageName() + " (Not Found)";
-            renderer.text(errorMsg, x, y, Color.RED, true);
-            setSize(renderer.textWidth(errorMsg), renderer.textHeight());
+            if (showError) {
+                String errorText = "Image: " + errorMessage;
+                renderer.text(errorText, x, y, Color.RED, true);
+                setSize(renderer.textWidth(errorText), renderer.textHeight());
+            } else {
+                String loadingMsg = "Loading image...";
+                renderer.text(loadingMsg, x, y, Color.WHITE, true);
+                setSize(renderer.textWidth(loadingMsg), renderer.textHeight());
+            }
             return;
         }
 
-        // Boyut hesapla
         double scale = imageScale.get();
         if (pulse.get()) {
             double pulseValue = Math.sin(System.currentTimeMillis() / 1000.0 * pulseSpeed.get()) * 0.1 + 1.0;
@@ -262,12 +184,10 @@ public class ImageHud extends HudElement {
             height = (int) (maxHeight.get() * scale);
         }
 
-        // Arka plan çiz
         if (showBackground.get()) {
             renderer.quad(x, y, width, height, backgroundColor.get());
         }
 
-        // Renk hesapla
         Color color;
         if (rainbow.get()) {
             double time = System.currentTimeMillis() / 1000.0 * rainbowSpeed.get();
@@ -278,155 +198,187 @@ public class ImageHud extends HudElement {
             color = new Color(settingColor.r, settingColor.g, settingColor.b, imageOpacity.get());
         }
 
-        // Resmi çiz
         renderer.texture(textureId, x, y, width, height, color);
-
-        // HUD boyutunu ayarla
         setSize(width, height);
     }
 
-    private String getCurrentImageName() {
-        if (presetImage.get() == PresetImages.CUSTOM) {
-            return customImageName.get();
+    private void loadImageFromUrl(String url) {
+        if (imageLoadingTask != null && !imageLoadingTask.isDone()) {
+            imageLoadingTask.cancel(true);
         }
-        return presetImage.get().getFileName();
-    }
 
-    private void loadImage() {
-        try {
-            String imageName = getCurrentImageName();
-            if (imageName.isEmpty()) {
-                error("Resim adı boş!");
-                textureLoaded = false;
-                return;
+        if (textureId != null) {
+            try {
+                MinecraftClient.getInstance().getTextureManager().destroyTexture(textureId);
+            } catch (Exception e) {
             }
+            textureId = null;
+        }
+        textureLoaded = false;
+        showError = false;
 
-            // Addon'un resource klasöründen resim yükle
-            String resourcePath = "/assets/images/" + imageName;
-            InputStream inputStream = getClass().getResourceAsStream(resourcePath);
-            
-            if (inputStream == null) {
-                error("Resim dosyası bulunamadı: " + imageName);
-                textureLoaded = false;
-                showAvailableImages();
-                return;
-            }
+        if (url == null || url.trim().isEmpty()) {
+            showError = true;
+            errorMessage = "URL is empty";
+            return;
+        }
 
-            try (inputStream) {
-                NativeImage nativeImage = NativeImage.read(inputStream);
-                
-                // Boyut bilgilerini al
-                imageWidth = nativeImage.getWidth();
-                imageHeight = nativeImage.getHeight();
-                
-                // Texture oluştur
-                NativeImageBackedTexture texture = new NativeImageBackedTexture(() -> "imagehud", nativeImage);
-                
-                // Eski texture'ı temizle
-                if (textureId != null) {
-                    MinecraftClient.getInstance().getTextureManager().destroyTexture(textureId);
+        url = url.trim();
+
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            showError = true;
+            errorMessage = "Invalid URL (must start with http:// or https://)";
+            return;
+        }
+
+        if (!SUPPORTED_FORMATS.matcher(url).matches()) {
+            showError = true;
+            errorMessage = "Unsupported image format (use .png, .jpg, .jpeg, or .gif)";
+            return;
+        }
+
+        final String finalUrl = url;
+        imageLoadingTask = CompletableFuture.runAsync(() -> {
+            try {
+                URL urlObj = new URL(finalUrl);
+                HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setConnectTimeout(10000);
+                connection.setReadTimeout(15000);
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+                connection.setRequestProperty("Accept", "image/png,image/jpeg,image/gif,image/*;q=0.9,*/*;q=0.8");
+                connection.setInstanceFollowRedirects(true);
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    throw new IOException("HTTP " + responseCode + " " + connection.getResponseMessage());
                 }
-                
-                // Yeni texture'ı register et
-                String textureName = "hud_image_" + imageName.replaceAll("\\.", "_").replaceAll("/", "_");
-                textureId = Identifier.of("voidclan", textureName);
-                MinecraftClient.getInstance().getTextureManager().registerTexture(textureId, texture);
-                
-                textureLoaded = true;
-                info("Resim yüklendi: " + imageName + " (" + imageWidth + "x" + imageHeight + ")");
-                
-            }
-        } catch (IOException e) {
-            error("Resim yüklenirken hata: " + e.getMessage());
-            textureLoaded = false;
-        }
-    }
 
-    private void checkForChanges() {
-        // Dizini yeniden tara
-        if (System.currentTimeMillis() - lastDirScan > 10000) { // 10 saniyede bir
-            scanImageDirectory();
-            lastDirScan = System.currentTimeMillis();
-        }
-    }
+                String contentType = connection.getContentType();
+                if (contentType != null && !contentType.toLowerCase().startsWith("image/")) {
+                    throw new IOException("Not an image: " + contentType);
+                }
 
-    private void scanImageDirectory() {
-        availableImages.clear();
-        try {
-            // Yaygın resim formatlarını kontrol et
-            String[] commonImages = {
-                "1.png", "icon.png", "2.png", "3.png",
-                "4.png", "5.png", "6.png", "7.png",
-                "imo1.png", "imo2.png", "imo3.png", "imo4.png",
-                "imo5.png", "imo6.png", "imo7.png" , "imo7.png",
-                "imo8.png" , "imo9.png", "imo10.png" , "Void-chan.png",
-                "duck.jpg", "bear.jpg", "kuromi.jpg"
-            };
+                ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                try (InputStream inputStream = connection.getInputStream()) {
+                    byte[] data = new byte[8192];
+                    int bytesRead;
+                    int totalBytes = 0;
+                    int maxSize = 10 * 1024 * 1024;
+                    
+                    while ((bytesRead = inputStream.read(data, 0, data.length)) != -1) {
+                        totalBytes += bytesRead;
+                        if (totalBytes > maxSize) {
+                            throw new IOException("Image too large (max 10MB)");
+                        }
+                        buffer.write(data, 0, bytesRead);
+                    }
+                }
+                byte[] imageData = buffer.toByteArray();
 
-            for (String imageName : commonImages) {
-                InputStream stream = getClass().getResourceAsStream("/assets/images/" + imageName);
-                if (stream != null) {
-                    availableImages.add(imageName);
+                if (imageData.length == 0) {
+                    throw new IOException("Empty image data");
+                }
+
+                BufferedImage bufferedImage;
+                try (ByteArrayInputStream imageStream = new ByteArrayInputStream(imageData)) {
+                    bufferedImage = ImageIO.read(imageStream);
+                }
+
+                if (bufferedImage == null) {
+                    throw new IOException("Failed to decode image - unsupported format or corrupted file");
+                }
+
+                if (bufferedImage.getWidth() > 2048 || bufferedImage.getHeight() > 2048) {
+                    throw new IOException("Image too large (max 2048x2048)");
+                }
+
+                NativeImage nativeImage = convertToNativeImage(bufferedImage);
+
+                MinecraftClient.getInstance().execute(() -> {
                     try {
-                        stream.close();
-                    } catch (IOException ignored) {}
-                }
+                        if (nativeImage == null) {
+                            showError = true;
+                            errorMessage = "Failed to convert image";
+                            return;
+                        }
+
+                        imageWidth = nativeImage.getWidth();
+                        imageHeight = nativeImage.getHeight();
+
+                        NativeImageBackedTexture texture = new NativeImageBackedTexture(() -> "imagehud", nativeImage);
+
+                        String textureName = "hud_image_" + Math.abs(finalUrl.hashCode()) + "_" + System.currentTimeMillis();
+                        textureId = Identifier.of("voidclan", textureName);
+                        MinecraftClient.getInstance().getTextureManager().registerTexture(textureId, texture);
+
+                        textureLoaded = true;
+                        showError = false;
+                    } catch (Exception e) {
+                        showError = true;
+                        errorMessage = "Texture creation failed: " + e.getMessage();
+                        e.printStackTrace();
+                        
+                        if (nativeImage != null) {
+                            try {
+                                nativeImage.close();
+                            } catch (Exception ignored) {}
+                        }
+                    }
+                });
+            } catch (Exception e) {
+                MinecraftClient.getInstance().execute(() -> {
+                    showError = true;
+                    errorMessage = "Load failed: " + (e.getMessage() != null ? e.getMessage() : e.getClass().getSimpleName());
+                });
             }
-        } catch (Exception e) {
-            error("Dizin tarama hatası: " + e.getMessage());
-        }
+        });
     }
 
-    private void showAvailableImages() {
-        if (!availableImages.isEmpty()) {
-            info("Mevcut resimler: " + String.join(", ", availableImages));
-        } else {
-            info("Hiç resim bulunamadı. Lütfen /assets/images/ klasörüne resim ekleyin.");
+    private NativeImage convertToNativeImage(BufferedImage bufferedImage) {
+        if (bufferedImage == null) return null;
+        
+        try {
+            int width = bufferedImage.getWidth();
+            int height = bufferedImage.getHeight();
+            
+            NativeImage nativeImage = new NativeImage(NativeImage.Format.RGBA, width, height, false);
+            
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    int rgb = bufferedImage.getRGB(x, y);
+                    
+                    int alpha = (rgb >> 24) & 0xFF;
+                    int red = (rgb >> 16) & 0xFF;
+                    int green = (rgb >> 8) & 0xFF;
+                    int blue = rgb & 0xFF;
+                    
+                    int abgr = (alpha << 24) | (blue << 16) | (green << 8) | red;
+                    
+                    nativeImage.setColor(x, y, abgr);
+                }
+            }
+            
+            return nativeImage;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
     @Override
-    public void tick(HudRenderer renderer) {
-        super.tick(renderer);
-        
-        // İlk kez yükleniyorsa resmi yükle
-        if (!textureLoaded && textureId == null) {
-            loadImage();
-        }
-    }
-
-    // Temizlik için
-    public void cleanup() {
+    public void remove() {
         if (textureId != null) {
-            MinecraftClient.getInstance().getTextureManager().destroyTexture(textureId);
+            try {
+                MinecraftClient.getInstance().getTextureManager().destroyTexture(textureId);
+            } catch (Exception e) {
+            }
             textureId = null;
         }
         textureLoaded = false;
-    }
-
-    // Utility metodları
-    public void refreshImage() {
-        loadImage();
-    }
-
-    public void listImages() {
-        scanImageDirectory();
-        showAvailableImages();
-    }
-
-    private static void info(String message) {
-        if (MinecraftClient.getInstance().player != null) {
-            MinecraftClient.getInstance().player.sendMessage(
-                net.minecraft.text.Text.literal("§7[§bImage HUD§7] §a" + message), false
-            );
-        }
-    }
-
-    private static void error(String message) {
-        if (MinecraftClient.getInstance().player != null) {
-            MinecraftClient.getInstance().player.sendMessage(
-                net.minecraft.text.Text.literal("§7[§bImage HUD§7] §c" + message), false
-            );
+        
+        if (imageLoadingTask != null && !imageLoadingTask.isDone()) {
+            imageLoadingTask.cancel(true);
         }
     }
 }
