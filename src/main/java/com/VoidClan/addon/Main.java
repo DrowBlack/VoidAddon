@@ -2,6 +2,9 @@ package com.VoidClan.addon;
 
 import com.VoidClan.addon.hud.ImageHud;
 import com.VoidClan.addon.modules.*;
+import com.VoidClan.addon.events.*;
+import com.VoidClan.addon.services.*;
+import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
@@ -12,15 +15,19 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 
 public class Main extends MeteorAddon {
+    public static KillDetectionService killDetectionService;
     public static final Category VOID = new Category("Void Addon");
     public static final Category CHAT = new Category("Void Bypass");
     public static final Category Misc = new Category("Void Misc");
     public static final HudGroup HUD_GROUP = new HudGroup("Void");
     public static final ArrayList<String> delayedMessages = new ArrayList<>();
+    
 
     @Override
     public void onInitialize() {
-    
+        killDetectionService = new KillDetectionService();
+        MeteorClient.EVENT_BUS.subscribe(killDetectionService);
+
         // Modules
         Modules.get().add(new FrameDupe());
         Modules.get().add(new AutoFrameDupe());
@@ -30,9 +37,8 @@ public class Main extends MeteorAddon {
         Modules.get().add(new ChatBypass());
         Modules.get().add(new LinkBypass());
         
-        // AutoMessage
-        Modules.get().add(new KillMessage());
-        Modules.get().add(new TotemMessage());
+        // AutoEz
+        Modules.get().add(new AutoEz());
 
 	Modules.get().add(new PingSpoof());
 

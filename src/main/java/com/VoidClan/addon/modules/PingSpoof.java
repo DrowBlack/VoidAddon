@@ -23,15 +23,15 @@ public class PingSpoof extends Module {
         .description("Adds delay (in ms) to your ping.")
         .defaultValue(250)
         .min(1)
-        .sliderMin(100)
-        .sliderMax(1000)
+        .sliderMin(1)
+        .sliderMax(252768)
         .build()
     );
 
-    // Variables
+
     private final Object2LongMap<KeepAliveC2SPacket> packets = new Object2LongOpenHashMap<>();
 
-    // Constructor
+   
     public PingSpoof() {
         super(Main.Misc, "ping-spoof", "Artificially increases your ping by delaying KeepAlive packets.");
     }
@@ -53,7 +53,7 @@ public class PingSpoof extends Module {
         }
     }
 
-    // Cancel outgoing KeepAlive and queue it
+    
     @EventHandler
     private void onSend(PacketEvent.Send event) {
         if (event.packet instanceof KeepAliveC2SPacket packet) {
@@ -63,11 +63,11 @@ public class PingSpoof extends Module {
             }
 
             packets.put(packet, System.currentTimeMillis());
-            event.cancel(); // prevent immediate sending
+            event.cancel(); 
         }
     }
 
-    // Release delayed packets
+  
     @EventHandler
     private void onReceive(PacketEvent.Receive event) {
         for (KeepAliveC2SPacket packet : new HashSet<>(packets.keySet())) {
