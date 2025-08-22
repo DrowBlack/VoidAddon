@@ -9,7 +9,7 @@
 
 <!-- Badges -->
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Releases](https://img.shields.io/github/v/tag/DrowBlack/VoidAddon?color=153F8D&label=Releases)](https://github.com/DrowBlack/VoidAddon/releases)
+[![Releases](https://img.shields.io/github/v/release/DrowBlack/VoidAddon?display_name=release&labelColor=gray&color=lightgray)](https://github.com/DrowBlack/Meteorist/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/DrowBlack/VoidAddon/total?style=flat&color=brightgreen)](https://github.com/DrowBlack/VoidAddonO/releases)
 [![Stars](https://img.shields.io/github/stars/DrowBlack/VoidAddon?style=flat&color=yellow)](https://github.com/DrowBlack/VoidAddon/stargazers)
 [![Code Size](https://img.shields.io/github/languages/code-size/DrowBlack/VoidAddon?style=flat&color=blue)](https://github.com/DrowBlack/VoidAddon)
