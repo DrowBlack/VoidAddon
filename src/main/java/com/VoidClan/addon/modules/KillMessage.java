@@ -26,7 +26,7 @@ public class KillMessage extends Module {
     private final Random random = new Random();
 
     public KillMessage() {
-        super(Main.Message, "kill-message", "Sends a message when you kill a player.");
+        super(Main.CHAT, "kill-message", "Sends a message when you kill a player.");
     }
 
     @EventHandler

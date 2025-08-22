@@ -36,7 +36,7 @@ public class TotemMessage extends Module {
     private long lastMessageTime = 0;
 
     public TotemMessage() {
-        super(Main.Message, "totem-message", "Sends a message when a player uses a totem.");
+        super(Main.CHAT, "totem-message", "Sends a message when a player uses a totem.");
     }
 
     @EventHandler

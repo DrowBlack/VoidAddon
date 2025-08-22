@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Main extends MeteorAddon {
     public static final Category VOID = new Category("Void Addon");
     public static final Category CHAT = new Category("Void Bypass");
-    public static final Category Message = new Category("Void Message");
+    public static final Category Misc = new Category("Void Misc");
     public static final HudGroup HUD_GROUP = new HudGroup("Void");
     public static final ArrayList<String> delayedMessages = new ArrayList<>();
 
@@ -34,6 +34,8 @@ public class Main extends MeteorAddon {
         Modules.get().add(new KillMessage());
         Modules.get().add(new TotemMessage());
 
+	Modules.get().add(new PingSpoof());
+
         Hud.get().register(ImageHud.INFO);
     }
 
@@ -41,7 +43,7 @@ public class Main extends MeteorAddon {
     public void onRegisterCategories() {
         Modules.registerCategory(VOID);
         Modules.registerCategory(CHAT);
-        Modules.registerCategory(Message);
+        Modules.registerCategory(Misc);
     }
 
     @Override
