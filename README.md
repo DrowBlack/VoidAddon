@@ -17,7 +17,7 @@
 [![Forks](https://img.shields.io/github/forks/DrowBlack/VoidAddon?style=flat&color=purple)](https://github.com/DrowBlack/VoidAddon/network/members)
 
 <!-- Discord Widget -->
-<a href="https://discord.gg/1347891778900201572"><img src="https://invidget.switchblade.xyz/VoidClan"></a>
+<a href="https://discord.gg/1347891778900201572"><img src="https://invidget.switchblade.xyz/54zummmwef"></a>
 
 <!-- Minecraft Version -->
 ![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.5-brightgreen?style=flat&logo=minecraft)
@@ -99,7 +99,7 @@ If you'd like to contribute to this project:
 
 If you have any questions or issues:
 
-- **Discord Server**: [Join here](https://discord.gg/VoidClan)
+- **Discord Server**: [Join here](https://discord.gg/54zummmwef)
 - **GitHub Issues**: [Report bugs or suggest features](https://github.com/DrowBlack/VoidAddon/issues)
 - **Documentation**: [Check our wiki pages](https://github.com/DrowBlack/VoidAddon/wiki)
 
