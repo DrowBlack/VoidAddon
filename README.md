@@ -20,7 +20,7 @@
 <a href="https://discord.gg/1347891778900201572"><img src="https://invidget.switchblade.xyz/54zummmwef"></a>
 
 <!-- Minecraft Version -->
-![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.5-brightgreen?style=flat&logo=minecraft)
+![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.5/1.21.1-brightgreen?style=flat&logo=minecraft)
 ![Mod Loader](https://img.shields.io/badge/Mod%20Loader-Fabric-ddd?style=flat)
 ![Meteor Client](https://img.shields.io/badge/Meteor%20Client-Required-orange?style=flat)
 
