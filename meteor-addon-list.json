@@ -1,0 +1,19 @@
+{
+  "description": "A short description of your addon.",
+  "tags": [
+    "PvP",
+    "Utility",
+    "Theme",
+    "Render",
+    "Misc",
+    "Exploit",
+    "Automation"
+  ],
+  "supported_versions": [
+    "1.21.5",
+    "1.21.1"
+  ],
+  "icon": "https://raw.githubusercontent.com/DrowBlack/VoidAddon/main/src/main/resources/assets/images/Void-chan.png",
+  "discord": "https://discord.gg/54zummmwef",
+  "homepage": "https://github.com/DrowBlack/VoidAddon"
+}
